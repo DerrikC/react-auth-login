@@ -12,7 +12,8 @@ const [currentUser, setCurrentUser] = useState()
 const [loading, setLoading] = useState(true)
 
 function signup(email, password){
-    return auth.createUSerWithEmailAndPassword (email, password)
+//need this to call to firebase
+    return auth.createUserWithEmailAndPassword (email, password)
 }
 
 useEffect(() => {
