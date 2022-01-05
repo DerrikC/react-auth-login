@@ -1,6 +1,6 @@
-import React, { useRef, emailRef, passwordRef, passwordConfirmRef, useState} from "react"
+import React, { useRef, useState} from "react"
 //taking from bootstrap
-import { Form, Button, Card } from "react-bootstrap"
+import { Form, Button, Card, Alert } from "react-bootstrap"
 import { useAuth } from "../contexts/AuthContext"
 
 export default function Signup() {
@@ -11,7 +11,7 @@ export default function Signup() {
     const [error, setError] = useState("")
     const [loading, setLoading] = useState(false)
 
-    function handleSubmit(e) {
+    async function handleSubmit(e) {
         e.preventDefault()
         // check if passwords are the same
         if (passwordRef.current.value !== passwordConfirmRef.current.value) {
@@ -35,7 +35,8 @@ export default function Signup() {
         <Card>
         <Card.Body>
         <h2 className="text-center mb-4"> Sign Up</h2>
-        <Form>
+        {error && <Alert variant="danger">{error}</Alert>}
+        <Form onSubmit={handleSubmit}>
             <Form.Group id="email">
                 <Form.Label>Email</Form.Label>
                 <Form.Control type="email" ref={emailRef} require />
@@ -48,7 +49,7 @@ export default function Signup() {
                 <Form.Label>Password Confirmation</Form.Label>
                 <Form.Control type="password" ref={passwordConfirmRef} require />
             </Form.Group>
-            <Button type="submit">Sign Up</Button>
+            <Button disabled={loading} type="submit">Sign Up</Button>
         </Form>
         </Card.Body>
         </Card>
