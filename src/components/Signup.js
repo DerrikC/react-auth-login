@@ -21,6 +21,7 @@ export default function Signup() {
         try {
             setError("")
             setLoading(true)
+            // can use await because it is an async function
             await signup(emailRef.current.value, passwordRef.current.value)
         } catch {
             setError("Failed to create an account")
