@@ -1,5 +1,6 @@
-import firebase from "firebase/app"
-import "firebase/auth"
+//updated to version 9
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/auth';
 
 const app = firebase.initializeApp({
     apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
@@ -9,7 +10,7 @@ const app = firebase.initializeApp({
     messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
     appId: process.env.REACT_APP_FIREBASE_APP_ID
 })
-//fucntion to give authentiation instance
+//function to give authentication instance
 export const auth = app.auth()
 export default app;
 //to be used everywhere else
