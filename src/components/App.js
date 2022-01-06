@@ -5,6 +5,7 @@ import { AuthProvider } from "../contexts/AuthContext"
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import Dashboard from "./Dashboard"
 import Login from "./Login"
+import PrivateRoute from "./PrivateRoute"
 
 function App() {
   //render app
@@ -17,7 +18,7 @@ function App() {
       <div className="w-100" style= {{ maxWidth: "400px" }}>
     <Router>
         <Routes>
-          <Route path="/" element={<Dashboard/>} />
+          <PrivateRoute path="/" element={<Dashboard/>} />
           <Route path="/signup" element={<Signup/>} />
           <Route path="/login" element={<Login/>} />
         </Routes>
