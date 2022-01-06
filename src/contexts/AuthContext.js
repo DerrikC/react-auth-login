@@ -13,8 +13,15 @@ const [loading, setLoading] = useState(true)
 
 function signup(email, password){
 //need this to call to firebase
+//can change this function if you do not want to use firebase
     return auth.createUserWithEmailAndPassword (email, password)
 }
+
+function login(email, password){
+    //need this to call to firebase
+        return auth.signInWithEmailAndPassword (email, password)
+    }
+    
 
 useEffect(() => {
 //when this method is called it will return unsubscribe
@@ -29,6 +36,7 @@ useEffect(() => {
 //pass as context
 const value = {
     currentUser,
+    login,
     signup
 }
 
