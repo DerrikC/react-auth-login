@@ -1,17 +1,12 @@
-
 import React from "react"
-import { Route, Redirect } from "react-router-dom"
+import { Navigate } from "react-router-dom"
 import { useAuth } from "../contexts/AuthContext"
 
-export default function PrivateRoute({ element: Element, ...rest }) {
+export default function PrivateRoute({ element }) {
   const { currentUser } = useAuth()
 
-  return (
-    <Route
-      {...rest}
-      render={props => {
-        return currentUser ? <Component {...props} /> : <Redirect to="/login" />
-      }}
-    ></Route>
-  )
+  //needed to remove render also changed redirect to navigate for v6 update
+    return currentUser ? element  : <Navigate to="/login" />
+
 }
+

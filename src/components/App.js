@@ -18,7 +18,15 @@ function App() {
       <div className="w-100" style= {{ maxWidth: "400px" }}>
     <Router>
         <Routes>
-          <PrivateRoute path="/" element={<Dashboard/>} />
+          {/* so you can not go to dashboard if not logged in */}
+          <Route
+           path="/" 
+           element={
+           <PrivateRoute>
+           <Dashboard/>
+           </PrivateRoute>
+           } 
+           />
           <Route path="/signup" element={<Signup/>} />
           <Route path="/login" element={<Login/>} />
         </Routes>
